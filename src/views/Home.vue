@@ -2,6 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <h1 class="text-blue-300">Hello World Tailwind Test</h1>
   </div>
 </template>
 
