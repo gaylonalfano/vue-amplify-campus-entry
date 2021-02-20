@@ -4,7 +4,21 @@ import router from "./router";
 import store from "./store";
 import "@/assets/tailwind.css";
 
-createApp(App)
-  .use(store)
-  .use(router)
-  .mount("#app");
+import {
+  applyPolyfills,
+  defineCustomElements
+} from "@aws-amplify/ui-components/loader";
+
+import Amplify from "aws-amplify";
+import awsconfig from "./aws-exports";
+Amplify.configure(awsconfig);
+
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
+
+const app = createApp(App);
+app.config.isCustomElement = tag => tag.startsWith("amplify-");
+app.use(store);
+app.use(router);
+app.mount("#app");

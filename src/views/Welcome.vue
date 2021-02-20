@@ -8,27 +8,19 @@
   <!--     <amplify-sign-out></amplify-sign-out> -->
   <!--   </amplify-authenticator> -->
   <!-- </div> -->
-  <amplify-authenticator
-    v-if="authStateRef !== 'signedin'"
-  ></amplify-authenticator>
-  <div v-if="authStateRef === 'signedin' && userRef">
-    <Navbar />
-    <Entrance />
+  <div class="welcome container">
+    <amplify-authenticator
+      v-if="authStateRef !== 'signedin'"
+    ></amplify-authenticator>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onBeforeUnmount, ref } from "vue";
 import { onAuthUIStateChange, AuthState } from "@aws-amplify/ui-components";
-import Entrance from "@/views/Entrance.vue";
-import Navbar from "@/components/Navbar.vue";
 
 export default defineComponent({
-  name: "App",
-  components: {
-    Navbar,
-    Entrance
-  },
+  name: "Welcome",
   setup() {
     // Following UI Components official tutorial but changing to Composition API:
     // https://docs.amplify.aws/ui/auth/authenticator/q/framework/vue#recommended-usage
